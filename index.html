@@ -5,14 +5,34 @@
     <title>Salary Calculator</title>
   </head>
   <body>
-    <h1>Salary Calculator</h1>
-    <form>
-      <p>Add Employee</p>
-      <input id="first-name-input" type="text" value="First Name" />
-      <input id="last-name-input" type="text" value="Last Name" />
-      <input id="id-input" type="text" value="ID" />
-      <input id="title-input" type="text" value="Title" />
-      <input id="salary-input" type="text" value="Annual Salary" />
-    </form>
-  </body>
+    <header>
+      <h1>Monthly Salary Calculator</h1>
+    </header>
+    <main>
+      <form>
+        <p>Add Employee</p>
+        <input id="first-name-input" type="text" value="First Name" />
+        <input id="last-name-input" type="text" value="Last Name" />
+        <input id="id-input" type="text" value="ID" />
+        <input id="title-input" type="text" value="Title" />
+        <input id="salary-input" type="text" value="Annual Salary" />
+        <button>Submit</button>
+      </form>
+      <div id="employee-salaries">
+        <p>Employees</p>
+        <table id="employee-salaries-table">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Annual Salary</th>
+              <th></th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </main>
+ </body>
 </html>
