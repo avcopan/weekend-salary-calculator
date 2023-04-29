@@ -35,6 +35,9 @@ const submitForm = (event) => {
       </td>
     </tr>
   `;
+
+  // Reset the form
+  document.querySelector('#salary-input-form').reset();
 };
 
 const removeEmployee = (event) => {
