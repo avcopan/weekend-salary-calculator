@@ -4,6 +4,31 @@ let dollarFormat = new Intl.NumberFormat('en-US', {
   currency: 'USD',
 });
 
+const evaluateNumberString = (string) => {
+  // remove everything that isn't a digit or dot and convert to number
+  return Number(string.replace(/[^0-9.]+/g, ''));
+}
+
+const updateMonthlyTotal = (salary) => {
+  // Update yearly total
+  if (!isNaN(salary)) {
+    yearlySalaryTotal += salary;
+  }
+
+  // Calculate monthly total
+  let monthlyTotal = yearlySalaryTotal / 12;
+
+  // Update value on DOM
+  let monthlyTotalString = dollarFormat.format(monthlyTotal);
+  let monthlyTotalElement = document.querySelector('#monthly-total');
+  monthlyTotalElement.innerHTML = `Total Monthly: ${monthlyTotalString}`;
+
+  // Add warning color if greater than 20,000
+  if (monthlyTotal > 20000) {
+    monthlyTotalElement.style['background-color'] = 'red';
+  }
+}
+
 const submitForm = (event) => {
   event.preventDefault();
   // Get values from input fields
@@ -11,15 +36,12 @@ const submitForm = (event) => {
   let lastName = document.querySelector('#last-name-input').value;
   let id = document.querySelector('#id-input').value;
   let title = document.querySelector('#title-input').value;
-  let salary = document.querySelector('#salary-input').value.replace(',', '');
+  let salary = evaluateNumberString(
+    document.querySelector('#salary-input').value.replace(',', '')
+  );
 
   // Update yearly salary total
-  if (!isNaN(salary)) {
-    yearlySalaryTotal += Number(salary);
-  }
-  let monthlyTotal = dollarFormat.format(yearlySalaryTotal / 12);
-  let monthlyTotalElement = document.querySelector('#monthly-total');
-  monthlyTotalElement.innerHTML = `Total Monthly: ${monthlyTotal}`;
+  updateMonthlyTotal(+salary);
 
   // Append row to table
   let salaryTable = document.querySelector('#salary-table-body');
@@ -29,7 +51,7 @@ const submitForm = (event) => {
       <td>${lastName}</td>
       <td>${id}</td>
       <td>${title}</td>
-      <td>${salary}</td>
+      <td class="salary-cell">${dollarFormat.format(salary)}</td>
       <td>
         <button onclick="removeEmployee(event)">Delete</button>
       </td>
@@ -41,5 +63,9 @@ const submitForm = (event) => {
 };
 
 const removeEmployee = (event) => {
-  event.target.parentElement.parentElement.remove();
+  let rowElement = event.target.parentElement.parentElement;
+  let salaryString = rowElement.querySelector('.salary-cell').innerHTML;
+  let salary = evaluateNumberString(salaryString);
+  updateMonthlyTotal(-salary);
+  rowElement.remove();
 };
