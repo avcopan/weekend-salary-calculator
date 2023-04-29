@@ -9,14 +9,15 @@
       <h1>Monthly Salary Calculator</h1>
     </header>
     <main>
-      <form>
+      <form class="salary-form" onsubmit="submitForm(event)">
         <p>Add Employee</p>
         <input id="first-name-input" type="text" value="First Name" />
         <input id="last-name-input" type="text" value="Last Name" />
         <input id="id-input" type="text" value="ID" />
         <input id="title-input" type="text" value="Title" />
         <input id="salary-input" type="text" value="Annual Salary" />
-        <button>Submit</button>
+        <br />
+        <input type="submit" value="Submit" />
       </form>
       <div id="employee-salaries">
         <p>Employees</p>
@@ -31,8 +32,11 @@
               <th></th>
             </tr>
           </thead>
+          <tbody id="salaryData">
+            <!-- Salary data will go here -->
+          </tbody>
         </table>
       </div>
     </main>
- </body>
+  </body>
 </html>
