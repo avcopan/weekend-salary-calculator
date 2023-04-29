@@ -11,7 +11,7 @@ const submitForm = (event) => {
   let lastName = document.querySelector('#last-name-input').value;
   let id = document.querySelector('#id-input').value;
   let title = document.querySelector('#title-input').value;
-  let salary = document.querySelector('#salary-input').value;
+  let salary = document.querySelector('#salary-input').value.replace(',', '');
 
   // Update yearly salary total
   if (!isNaN(salary)) {
