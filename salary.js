@@ -1,13 +1,15 @@
+/* Global variables */
 let yearlySalaryTotal = 0;
 let dollarFormat = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
 });
 
+/* Functions */
 const evaluateNumberString = (string) => {
   // remove everything that isn't a digit or dot and convert to number
   return Number(string.replace(/[^0-9.]+/g, ''));
-}
+};
 
 const updateMonthlyTotal = (salary) => {
   // Update yearly total
@@ -26,8 +28,10 @@ const updateMonthlyTotal = (salary) => {
   // Add warning color if greater than 20,000
   if (monthlyTotal > 20000) {
     monthlyTotalElement.style['background-color'] = 'red';
+  } else {
+    monthlyTotalElement.style.removeProperty('background-color');
   }
-}
+};
 
 const submitForm = (event) => {
   event.preventDefault();
@@ -69,3 +73,11 @@ const removeEmployee = (event) => {
   updateMonthlyTotal(-salary);
   rowElement.remove();
 };
+
+/* Main script */
+let salaryTable = document.querySelector('#salary-table-body');
+let salaryCells = document.querySelectorAll('.salary-cell');
+for (let salaryCell of salaryCells) {
+  salary = evaluateNumberString(salaryCell.innerHTML);
+  updateMonthlyTotal(salary);
+}
