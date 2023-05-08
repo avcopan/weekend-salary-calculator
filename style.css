@@ -1,13 +1,54 @@
 html {
   font-family: 'Roboto', Arial, sans-serif;
+  background-color:darkslategray;
+  color: #d8d8bf;
 }
 
 .salary-table {
   table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
+  color: black;
+  text-align: right;
 }
 
+.warning-format {
+  background-color: red;
+}
+
+/* flex box practice */
+.monthly-total-line {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.monthly-total-line #monthly-total {
+  padding: 2px;
+  margin: 5px;
+  border-radius: 5px;
+  border: thick double #d8d8bf;
+}
+
+/* add background color to header */
+.salary-table thead tr {
+  background-color: #bb8fbb;
+}
+
+/* add body row banding */
+.salary-table tbody tr:nth-of-type(odd) {
+  background-color: #ebdfeb;
+}
+
+.salary-table tbody tr:nth-of-type(even) {
+  background-color: #d8bfd8;
+}
+
+.salary-table th, .salary-table td {
+  padding: 5px 10px;
+}
+
+/* COLUMN WIDTHS */
 /* first name */
 .salary-table thead th:nth-child(1) {
   width: 15%;
@@ -26,13 +67,9 @@ html {
 }
 /* salary */
 .salary-table thead th:nth-child(5) {
-  width: 15%;
+  width: 20%;
 }
 /* delete-column */
 .salary-table thead th:nth-child(6) {
-  width: 20%;
-}
-
-.salary-table th, .salary-table td {
-  padding: 5px 10px;
+  width: 15%;
 }

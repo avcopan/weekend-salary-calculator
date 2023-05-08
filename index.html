@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <h1>Monthly Salary Calculator</h1>
+      <h1>Monthly Salary Cost Calculator</h1>
     </header>
     <main>
       <form id="salary-input-form" onsubmit="submitForm(event)">
@@ -20,7 +20,7 @@
         <input id="title-input" type="text" placeholder="Title" />
         <input id="salary-input" type="text" placeholder="Annual Salary" />
         <br />
-        <input type="submit" value="Submit" />
+        <button type="submit">Submit</button>
       </form>
       <div id="employee-salaries">
         <p>Employees</p>
@@ -42,7 +42,7 @@
               <td>Crannigan</td>
               <td>1234</td>
               <td>Boss</td>
-              <td class="salary-cell">$120,000</td>
+              <td class="salary-cell">$120,000.00</td>
               <td>
                 <button onclick="removeEmployee(event)">Delete</button>
               </td>
@@ -52,17 +52,17 @@
               <td>Flannigan</td>
               <td>2345</td>
               <td>Janitor</td>
-              <td class="salary-cell">$30,000</td>
+              <td class="salary-cell">$30,000.00</td>
               <td>
                 <button onclick="removeEmployee(event)">Delete</button>
               </td>
             </tr>
             <tr>
-              <td>Jilbert</td>
+              <td>Filbert</td>
               <td>Stannigan</td>
               <td>3456</td>
               <td>Assistant Boss</td>
-              <td class="salary-cell">$90,000</td>
+              <td class="salary-cell">$90,000.00</td>
               <td>
                 <button onclick="removeEmployee(event)">Delete</button>
               </td>
@@ -72,7 +72,7 @@
               <td>Drannigan</td>
               <td>4567</td>
               <td>Engineer</td>
-              <td class="salary-cell">$60,000</td>
+              <td class="salary-cell">$60,000.00</td>
               <td>
                 <button onclick="removeEmployee(event)">Delete</button>
               </td>
@@ -80,7 +80,9 @@
           </tbody>
         </table>
         </div>
-        <div id="monthly-total">Total Monthly: $0</div>
+        <p class="monthly-total-line">
+          Monthly Total: <span id="monthly-total">$0.00</span>
+        </p>
       </main>
       <script src="salary.js"></script>
     </body>

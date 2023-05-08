@@ -23,13 +23,13 @@ const updateMonthlyTotal = (salary) => {
   // Update value on DOM
   let monthlyTotalString = dollarFormat.format(monthlyTotal);
   let monthlyTotalElement = document.querySelector('#monthly-total');
-  monthlyTotalElement.innerHTML = `Total Monthly: ${monthlyTotalString}`;
+  monthlyTotalElement.innerHTML = `${monthlyTotalString}`;
 
   // Add warning color if greater than 20,000
   if (monthlyTotal > 20000) {
-    monthlyTotalElement.style['background-color'] = 'red';
+    monthlyTotalElement.classList.add('warning-format');
   } else {
-    monthlyTotalElement.style.removeProperty('background-color');
+    monthlyTotalElement.classList.remove('warning-format');
   }
 };
 
